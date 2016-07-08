@@ -40,6 +40,7 @@
 #import "MGLUserLocation_Private.h"
 #import "MGLAnnotationImage_Private.h"
 #import "MGLAnnotationView_Private.h"
+#import "MGLUserLocationAnnotationView_Private.h"
 #import "MGLMapboxEvents.h"
 #import "MGLCompactCalloutView.h"
 #import "MGLAnnotationContainerView.h"
@@ -3831,9 +3832,8 @@ mbgl::Duration MGLDurationInSeconds(NSTimeInterval duration)
         {
             [self.delegate mapViewWillStartLocatingUser:self];
         }
-
-        self.userLocation = [[MGLUserLocation alloc] initWithMapView:self];
         
+        self.userLocation = [[MGLUserLocation alloc] initWithMapView:self];
         
         MGLUserLocationAnnotationView *userLocationAnnotationView;
         
@@ -3847,12 +3847,9 @@ mbgl::Duration MGLDurationInSeconds(NSTimeInterval duration)
             }
         }
         
-        if (!userLocationAnnotationView)
-        {
-            userLocationAnnotationView = [[MGLFaux3DUserLocationAnnotationView alloc] initInMapView:self userLocation:self.userLocation];
-        }
-        
-        self.userLocationAnnotationView = userLocationAnnotationView;
+        self.userLocationAnnotationView = userLocationAnnotationView ?: [[MGLFaux3DUserLocationAnnotationView alloc] init];
+        self.userLocationAnnotationView.mapView = self;
+        self.userLocationAnnotationView.userLocation = self.userLocation;
         
         self.userLocationAnnotationView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
                                                             UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);
