@@ -32,6 +32,7 @@ typedef NS_OPTIONS(NSUInteger, MGLMapDebugMaskOptions) {
 
 @class MGLAnnotationImage;
 @class MGLMapCamera;
+@class MGLStyle;
 
 @protocol MGLAnnotation;
 @protocol MGLMapViewDelegate;
@@ -898,6 +899,10 @@ IB_DESIGNABLE
  released software for performance and aesthetic reasons.
  */
 @property (nonatomic) MGLMapDebugMaskOptions debugMask;
+
+#pragma mark Runtime styling API
+
+- (MGLStyle *)style;
 
 @end
 
