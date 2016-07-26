@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -274,6 +275,9 @@ public class RuntimeStyleActivity extends AppCompatActivity {
                 stop(12, fillColor(Color.RED)),
                 stop(20, fillColor(Color.BLACK))
         )));
+
+        //do some animations to show it off properly
+        mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(1), 1500, new DefaultCallback());
     }
 
     private String readRawResource(@RawRes int rawResource) throws IOException {
