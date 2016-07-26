@@ -28,13 +28,17 @@ public abstract class Layer {
         for (Property<?> property : properties) {
             if (property instanceof PaintProperty) {
                 updateClasses = true;
-                nativeSetPaintProperty(property.name, property.value);
+                nativeSetPaintProperty(property.name, convertValue(property.value));
             } else {
-                nativeSetLayoutProperty(property.name, property.value);
+                nativeSetLayoutProperty(property.name, convertValue(property.value));
             }
         }
 
         nativeUpdateStyle(updateClasses);
+    }
+
+    private Object convertValue(Object value) {
+        return value != null && value instanceof Function ? ((Function) value).toValueObject() : value;
     }
 
     public String getId() {

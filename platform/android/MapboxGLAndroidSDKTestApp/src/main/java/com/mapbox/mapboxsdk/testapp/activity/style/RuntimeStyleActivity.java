@@ -16,6 +16,7 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.style.layers.FillLayer;
+import com.mapbox.mapboxsdk.style.layers.Function;
 import com.mapbox.mapboxsdk.style.layers.Layer;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
 import com.mapbox.mapboxsdk.style.layers.NoSuchLayerException;
@@ -36,6 +37,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 import static com.mapbox.mapboxsdk.style.layers.Filter.*;
+import static com.mapbox.mapboxsdk.style.layers.Function.*;
 import static com.mapbox.mapboxsdk.style.layers.Property.*;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.*;
 
@@ -138,6 +140,9 @@ public class RuntimeStyleActivity extends AppCompatActivity {
             case R.id.action_add_satellite_layer:
                 addSatelliteLayer();
                 return true;
+            case R.id.action_update_water_color_on_zoom:
+                updateWaterColorOnZoom();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -180,8 +185,8 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         Layer water = mapboxMap.getLayer("water");
         if (water != null) {
             water.set(
-                visibility(true),
-                fillColor(Color.RED)
+                    visibility(true),
+                    fillColor(Color.RED)
             );
         } else {
             Toast.makeText(RuntimeStyleActivity.this, "No water layer in this style", Toast.LENGTH_SHORT).show();
@@ -254,6 +259,21 @@ public class RuntimeStyleActivity extends AppCompatActivity {
 
         //Add a layer
         mapboxMap.addLayer(new RasterLayer("satellite-layer", "my-raster-source"));
+    }
+
+    private void updateWaterColorOnZoom() {
+        Layer layer = mapboxMap.getLayer("water");
+        if (layer == null) {
+            return;
+        }
+
+        //Set a zoom function to update the color of the water
+        layer.set(fillColor(zoom(
+                stop(1, fillColor(Color.GREEN)),
+                stop(4, fillColor(Color.BLUE)),
+                stop(12, fillColor(Color.RED)),
+                stop(20, fillColor(Color.BLACK))
+        )));
     }
 
     private String readRawResource(@RawRes int rawResource) throws IOException {

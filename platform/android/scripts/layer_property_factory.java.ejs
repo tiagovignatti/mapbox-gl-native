@@ -30,10 +30,18 @@ public class PropertyFactory {
         return new PaintProperty<>("<%-  property.name %>", value);
     }
 
+    public static Property<Function<<%- propertyType(property) %>>> <%- camelizeWithLeadingLowercase(property.name) %>(Function<<%- propertyType(property) %>> function) {
+        return new PaintProperty<>("<%-  property.name %>", function);
+    }
+
 <% } -%>
 <% for (const property of layoutProperties) { -%>
     public static Property<<%- propertyType(property) %>> <%- camelizeWithLeadingLowercase(property.name) %>(<%- propertyTypeAnnotation(property) %><%- iff(() => propertyTypeAnnotation(property), " ") %><%- propertyType(property) %> value) {
         return new LayoutProperty<>("<%-  property.name %>", value);
+    }
+
+    public static Property<Function<<%- propertyType(property) %>>> <%- camelizeWithLeadingLowercase(property.name) %>(Function<<%- propertyType(property) %>> function) {
+        return new LayoutProperty<>("<%-  property.name %>", function);
     }
 
 <% } -%>
