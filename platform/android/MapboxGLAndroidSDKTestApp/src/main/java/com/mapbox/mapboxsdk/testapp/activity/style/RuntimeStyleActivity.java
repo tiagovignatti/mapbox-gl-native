@@ -251,6 +251,13 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         );
 
         mapboxMap.addLayer(layer);
+
+        //Make sure it's also applied after the fact
+        layer.setMinZoom(10);
+        layer.setMaxZoom(15);
+
+        layer = (LineLayer) mapboxMap.getLayer("terrainLayer");
+        Toast.makeText(this, String.format("Set min/max zoom to %s - %s", layer.getMinZoom(), layer.getMaxZoom()), Toast.LENGTH_SHORT).show();
     }
 
     private void addSatelliteLayer() {
@@ -277,7 +284,7 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         )));
 
         //do some animations to show it off properly
-        mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(1), 1500, new DefaultCallback());
+        mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(1), 1500);
     }
 
     private String readRawResource(@RawRes int rawResource) throws IOException {

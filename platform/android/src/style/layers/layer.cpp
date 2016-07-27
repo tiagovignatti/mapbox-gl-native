@@ -133,6 +133,22 @@ namespace android {
         }
     }
 
+    jni::jfloat Layer::getMinZoom(jni::JNIEnv& env){
+        return layer.getMinZoom();
+    }
+
+    jni::jfloat Layer::getMaxZoom(jni::JNIEnv& env) {
+        return layer.getMaxZoom();
+    }
+
+    void Layer::setMinZoom(jni::JNIEnv&, jni::jfloat zoom) {
+        layer.setMinZoom(zoom);
+    }
+
+    void Layer::setMaxZoom(jni::JNIEnv&, jni::jfloat zoom) {
+        layer.setMaxZoom(zoom);
+    }
+
     jni::Class<Layer> Layer::javaClass;
 
     void Layer::registerNative(jni::JNIEnv& env) {
@@ -150,7 +166,11 @@ namespace android {
             METHOD(&Layer::setPaintProperty, "nativeSetPaintProperty"),
             METHOD(&Layer::updateStyle, "nativeUpdateStyle"),
             METHOD(&Layer::setFilter, "nativeSetFilter"),
-            METHOD(&Layer::setSourceLayer, "nativeSetSourceLayer")
+            METHOD(&Layer::setSourceLayer, "nativeSetSourceLayer"),
+            METHOD(&Layer::getMinZoom, "nativeGetMinZoom"),
+            METHOD(&Layer::getMaxZoom, "nativeGetMaxZoom"),
+            METHOD(&Layer::setMinZoom, "nativeSetMinZoom"),
+            METHOD(&Layer::setMaxZoom, "nativeSetMaxZoom")
         );
 
     }

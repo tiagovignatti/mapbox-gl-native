@@ -37,12 +37,24 @@ public abstract class Layer {
         nativeUpdateStyle(updateClasses);
     }
 
-    private Object convertValue(Object value) {
-        return value != null && value instanceof Function ? ((Function) value).toValueObject() : value;
-    }
-
     public String getId() {
         return nativeGetId();
+    }
+
+    public float getMinZoom() {
+        return nativeGetMinZoom();
+    }
+
+    public float getMaxZoom() {
+        return nativeGetMaxZoom();
+    }
+
+    public void setMinZoom(float zoom) {
+        nativeSetMinZoom(zoom);
+    }
+
+    public void setMaxZoom(float zoom) {
+        nativeSetMaxZoom(zoom);
     }
 
     @Override
@@ -60,6 +72,14 @@ public abstract class Layer {
 
     protected native void nativeUpdateStyle(boolean updateClasses);
 
+    protected native float nativeGetMinZoom();
+
+    protected native float nativeGetMaxZoom();
+
+    protected native void nativeSetMinZoom(float zoom);
+
+    protected native void nativeSetMaxZoom(float zoom);
+
     @Override
     public String toString() {
         return "Layer: " + getId();
@@ -67,6 +87,10 @@ public abstract class Layer {
 
     public long getNativePtr() {
         return nativePtr;
+    }
+
+    private Object convertValue(Object value) {
+        return value != null && value instanceof Function ? ((Function) value).toValueObject() : value;
     }
 
 }
