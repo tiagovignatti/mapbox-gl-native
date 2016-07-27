@@ -497,6 +497,10 @@ final class NativeMapView {
         nativeRemoveSource(mNativeMapViewPtr, sourceId);
     }
 
+    public void scheduleTakeSnapshot() {
+        nativeScheduleTakeSnapshot(mNativeMapViewPtr);
+    }
+
     //
     // Callbacks
     //
@@ -511,6 +515,10 @@ final class NativeMapView {
 
     protected void onFpsChanged(double fps) {
         mMapView.onFpsChanged(fps);
+    }
+
+    protected void onSnapshotReady(byte[] bytes){
+        mMapView.onSnapshotReady(bytes);
     }
 
     //
@@ -682,4 +690,6 @@ final class NativeMapView {
     private native void nativeAddSource(long mNativeMapViewPtr, String id, Source source);
 
     private native void nativeRemoveSource(long mNativeMapViewPtr, String sourceId);
+
+    private native void nativeScheduleTakeSnapshot(long nativeMapViewPtr);
 }
