@@ -29,85 +29,43 @@ namespace android {
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterOpacity());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-opacity': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterHueRotate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterHueRotate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-hue-rotate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterBrightnessMin(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterBrightnessMin());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-brightness-min': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterBrightnessMax(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterBrightnessMax());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-brightness-max': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterSaturation(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterSaturation());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-saturation': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterContrast(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterContrast());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-contrast': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> RasterLayer::getRasterFadeDuration(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::RasterLayer>()->RasterLayer::getRasterFadeDuration());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'raster-fade-duration': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 

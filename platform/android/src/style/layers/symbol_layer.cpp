@@ -29,577 +29,289 @@ namespace android {
 
     jni::Object<jni::ObjectTag> SymbolLayer::getSymbolPlacement(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getSymbolPlacement());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'symbol-placement': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getSymbolSpacing(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getSymbolSpacing());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'symbol-spacing': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getSymbolAvoidEdges(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getSymbolAvoidEdges());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'symbol-avoid-edges': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconAllowOverlap(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconAllowOverlap());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-allow-overlap': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconIgnorePlacement(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconIgnorePlacement());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-ignore-placement': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconOptional(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconOptional());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-optional': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconRotationAlignment(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconRotationAlignment());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-rotation-alignment': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconSize(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconSize());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-size': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconTextFit(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconTextFit());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-text-fit': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconTextFitPadding(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconTextFitPadding());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-text-fit-padding': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconImage(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconImage());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-image': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconRotate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconRotate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-rotate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconPadding(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconPadding());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-padding': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconKeepUpright(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconKeepUpright());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-keep-upright': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconOffset(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconOffset());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-offset': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextPitchAlignment(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextPitchAlignment());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-pitch-alignment': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextRotationAlignment(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextRotationAlignment());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-rotation-alignment': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextField(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextField());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-field': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextFont(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextFont());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-font': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextSize(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextSize());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-size': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextMaxWidth(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextMaxWidth());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-max-width': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextLineHeight(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextLineHeight());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-line-height': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextLetterSpacing(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextLetterSpacing());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-letter-spacing': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextJustify(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextJustify());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-justify': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextAnchor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextAnchor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-anchor': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextMaxAngle(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextMaxAngle());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-max-angle': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextRotate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextRotate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-rotate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextPadding(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextPadding());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-padding': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextKeepUpright(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextKeepUpright());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-keep-upright': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextTransform(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextTransform());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-transform': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextOffset(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextOffset());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-offset': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextAllowOverlap(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextAllowOverlap());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-allow-overlap': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextIgnorePlacement(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextIgnorePlacement());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-ignore-placement': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextOptional(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextOptional());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-optional': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconOpacity());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-opacity': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconHaloColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconHaloColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-halo-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconHaloWidth(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconHaloWidth());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-halo-width': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconHaloBlur(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconHaloBlur());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-halo-blur': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconTranslate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconTranslate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-translate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getIconTranslateAnchor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getIconTranslateAnchor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'icon-translate-anchor': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextOpacity());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-opacity': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextHaloColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextHaloColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-halo-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextHaloWidth(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextHaloWidth());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-halo-width': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextHaloBlur(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextHaloBlur());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-halo-blur': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextTranslate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextTranslate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-translate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> SymbolLayer::getTextTranslateAnchor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::SymbolLayer>()->SymbolLayer::getTextTranslateAnchor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'text-translate-anchor': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 

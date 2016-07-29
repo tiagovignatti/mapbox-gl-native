@@ -29,85 +29,43 @@ namespace android {
 
     jni::Object<jni::ObjectTag> FillLayer::getFillAntialias(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillAntialias());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-antialias': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillOpacity());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-opacity': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillOutlineColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillOutlineColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-outline-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillTranslate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillTranslate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-translate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillTranslateAnchor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillTranslateAnchor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-translate-anchor': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> FillLayer::getFillPattern(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::FillLayer>()->FillLayer::getFillPattern());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'fill-pattern': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 

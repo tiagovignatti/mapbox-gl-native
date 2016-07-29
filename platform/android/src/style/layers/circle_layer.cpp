@@ -29,85 +29,43 @@ namespace android {
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleRadius(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleRadius());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-radius': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleColor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleColor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-color': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleBlur(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleBlur());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-blur': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleOpacity(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleOpacity());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-opacity': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleTranslate(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleTranslate());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-translate': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCircleTranslateAnchor(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCircleTranslateAnchor());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-translate-anchor': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
     jni::Object<jni::ObjectTag> CircleLayer::getCirclePitchScale(jni::JNIEnv& env) {
         using namespace mbgl::android::conversion;
-
         Result<jni::jobject*> converted = convert<jni::jobject*>(env, layer.as<mbgl::style::CircleLayer>()->CircleLayer::getCirclePitchScale());
-
-        if (!converted) {
-            mbgl::Log::Error(mbgl::Event::JNI, "Error getting property 'circle-pitch-scale': " + converted.error().message);
-        }
-
         return jni::Object<jni::ObjectTag>(*converted);
     }
 
