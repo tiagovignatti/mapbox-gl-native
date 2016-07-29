@@ -28,4 +28,56 @@ public class FillLayer extends Layer {
         nativeSetFilter(filter);
     }
 
+
+    // Property getters
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<Boolean> getFillAntialias() {
+        return (PropertyValue<Boolean>) new PropertyValue(nativeGetFillAntialias());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<Float> getFillOpacity() {
+        return (PropertyValue<Float>) new PropertyValue(nativeGetFillOpacity());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<String> getFillColor() {
+        return (PropertyValue<String>) new PropertyValue(nativeGetFillColor());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<String> getFillOutlineColor() {
+        return (PropertyValue<String>) new PropertyValue(nativeGetFillOutlineColor());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<Float[]> getFillTranslate() {
+        return (PropertyValue<Float[]>) new PropertyValue(nativeGetFillTranslate());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<String> getFillTranslateAnchor() {
+        return (PropertyValue<String>) new PropertyValue(nativeGetFillTranslateAnchor());
+    }
+
+    @SuppressWarnings("unchecked")
+    public PropertyValue<String> getFillPattern() {
+        return (PropertyValue<String>) new PropertyValue(nativeGetFillPattern());
+    }
+
+    private native Object nativeGetFillAntialias();
+
+    private native Object nativeGetFillOpacity();
+
+    private native Object nativeGetFillColor();
+
+    private native Object nativeGetFillOutlineColor();
+
+    private native Object nativeGetFillTranslate();
+
+    private native Object nativeGetFillTranslateAnchor();
+
+    private native Object nativeGetFillPattern();
+
 }

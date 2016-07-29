@@ -59,6 +59,7 @@ import java.util.concurrent.TimeUnit;
  * </p>
  */
 public class MapboxMap {
+    private static final String TAG = MapboxMap.class.getSimpleName();
 
     private MapView mMapView;
     private UiSettings mUiSettings;
@@ -112,6 +113,21 @@ public class MapboxMap {
     @UiThread
     public Layer getLayer(@NonNull String layerId) {
         return getMapView().getNativeMapView().getLayer(layerId);
+    }
+
+    /**
+     * Tries to cast the Layer to T, returns null if it's another type
+     */
+    @Nullable
+    @UiThread
+    public <T extends Layer> T getLayerAs(@NonNull String layerId) {
+        try {
+            //noinspection unchecked
+            return (T) getMapView().getNativeMapView().getLayer(layerId);
+        } catch (ClassCastException e) {
+            Log.e(TAG, String.format("Layer: %s is a different type: %s", layerId, e.getMessage()));
+            return null;
+        }
     }
 
     @UiThread

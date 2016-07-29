@@ -6,6 +6,7 @@ import android.support.annotation.RawRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.mapbox.mapboxsdk.style.layers.Layer;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
 import com.mapbox.mapboxsdk.style.layers.NoSuchLayerException;
 import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.layers.PropertyValue;
 import com.mapbox.mapboxsdk.style.layers.RasterLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.style.sources.RasterSource;
@@ -231,6 +233,16 @@ public class RuntimeStyleActivity extends AppCompatActivity {
 
         //Or get the object later and set it. It's all good.
         mapboxMap.getLayer("parksLayer").set(fillColor(Color.RED));
+
+        //You can get a typed layer, if you're sure it's of that type. Use with care
+        layer = mapboxMap.getLayerAs("parksLayer");
+        //And get some properties
+        PropertyValue<Boolean> fillAntialias = layer.getFillAntialias();
+        Log.d(TAG, "Fill anti alias: " + fillAntialias.value);
+        layer.set(fillTranslateAnchor(FILL_TRANSLATE_ANCHOR_MAP));
+        PropertyValue<String> fillTranslateAnchor = layer.getFillTranslateAnchor();
+        Log.d(TAG, "Fill translate anchor: " + fillTranslateAnchor.value);
+
 
         //Get a good look at it all
         mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(12));

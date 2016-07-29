@@ -80,6 +80,8 @@ public abstract class Layer {
 
     protected native void nativeSetMaxZoom(float zoom);
 
+    protected native Object nativeGetProperty(String name);
+
     @Override
     public String toString() {
         return "Layer: " + getId();
