@@ -4,9 +4,14 @@
 #include <jni/jni.hpp>
 
 #include <mbgl/platform/log.hpp>
+
+//Java -> C++ conversion
 #include <mbgl/style/conversion.hpp>
 #include <mbgl/style/conversion/layer.hpp>
 #include <mbgl/style/conversion/source.hpp>
+
+//C++ -> Java conversion
+#include "../conversion/property_value.hpp"
 
 #include <string>
 
@@ -149,6 +154,11 @@ namespace android {
         layer.setMaxZoom(zoom);
     }
 
+    jni::Object<jni::ObjectTag> Layer::getVisibility(jni::JNIEnv& env) {
+        using namespace mbgl::android::conversion;
+        return jni::Object<jni::ObjectTag>(*convert<jni::jobject*>(env, layer.getVisibility()));
+    }
+
     jni::Class<Layer> Layer::javaClass;
 
     void Layer::registerNative(jni::JNIEnv& env) {
@@ -170,7 +180,8 @@ namespace android {
             METHOD(&Layer::getMinZoom, "nativeGetMinZoom"),
             METHOD(&Layer::getMaxZoom, "nativeGetMaxZoom"),
             METHOD(&Layer::setMinZoom, "nativeSetMinZoom"),
-            METHOD(&Layer::setMaxZoom, "nativeSetMaxZoom")
+            METHOD(&Layer::setMaxZoom, "nativeSetMaxZoom"),
+            METHOD(&Layer::getVisibility, "nativeGetVisibility")
         );
 
     }

@@ -16,6 +16,13 @@ namespace android {
 namespace conversion {
 
 template <>
+struct Converter<jni::jobject*, mbgl::style::VisibilityType> {
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const mbgl::style::VisibilityType& value) const {
+        return convert<jni::jobject*, std::string>(env, toString(value));
+    }
+};
+
+template <>
 struct Converter<jni::jobject*, mbgl::style::LineCapType> {
     Result<jni::jobject*> operator()(jni::JNIEnv& env, const mbgl::style::LineCapType& value) const {
         return convert<jni::jobject*, std::string>(env, toString(value));

@@ -156,7 +156,7 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         for (String roadLayer : roadLayers) {
             Layer layer = mapboxMap.getLayer(roadLayer);
             if (layer != null) {
-                layer.set(visibility(false));
+                layer.set(visibility(VISIBLE));
             }
         }
     }
@@ -188,7 +188,7 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         Layer water = mapboxMap.getLayer("water");
         if (water != null) {
             water.set(
-                    visibility(true),
+                    visibility(VISIBLE),
                     fillColor(Color.RED)
             );
         } else {
@@ -242,7 +242,8 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         layer.set(fillTranslateAnchor(FILL_TRANSLATE_ANCHOR_MAP));
         PropertyValue<String> fillTranslateAnchor = layer.getFillTranslateAnchor();
         Log.d(TAG, "Fill translate anchor: " + fillTranslateAnchor.getValue());
-
+        PropertyValue<String> visibility = layer.getVisibility();
+        Log.d(TAG, "Visibility: " + visibility.getValue());
 
         //Get a good look at it all
         mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(12));

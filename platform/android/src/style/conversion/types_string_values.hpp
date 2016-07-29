@@ -10,6 +10,20 @@ namespace mbgl {
 namespace android {
 namespace conversion {
 
+    //visibility
+    inline std::string toString(mbgl::style::VisibilityType value) {
+        switch (value) {
+          case mbgl::style::VisibilityType::Visible:
+            return "visible";
+            break;
+          case mbgl::style::VisibilityType::None:
+            return "none";
+            break;
+          default:
+            throw std::runtime_error("Not implemented");
+        }
+    }
+
     //line-cap
     inline std::string toString(mbgl::style::LineCapType value) {
         switch (value) {

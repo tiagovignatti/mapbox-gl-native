@@ -10,13 +10,17 @@ import android.support.annotation.ColorInt;
 
 /**
  * Constructs paint/layout properties for Layers
- * @see <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers>Layer style documentation</a>
  *
+ * @see <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers>Layer style documentation</a>
  */
 public class PropertyFactory {
 
-    public static Property<String> visibility(Boolean visible) {
-        return new LayoutProperty<>("visibility", visible? "visible": "none");
+    public static Property<String> visibility(@Property.VISIBILITY String value) {
+        return new LayoutProperty<>("visibility", value);
+    }
+
+    public static Property<Function<String>> visibility(Function<String> function) {
+        return new LayoutProperty<>("visibility", function);
     }
 
 <% for (const property of paintProperties) { -%>

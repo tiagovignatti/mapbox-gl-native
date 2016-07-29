@@ -18,6 +18,13 @@ namespace mbgl {
 namespace android {
 namespace conversion {
 
+template <>
+struct Converter<jni::jobject*, mbgl::style::VisibilityType> {
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const mbgl::style::VisibilityType& value) const {
+        return convert<jni::jobject*, std::string>(env, toString(value));
+    }
+};
+
 <% for (const property of properties) { -%>
 template <>
 struct Converter<jni::jobject*, mbgl::style::<%- propertyNativeType(property) %>> {

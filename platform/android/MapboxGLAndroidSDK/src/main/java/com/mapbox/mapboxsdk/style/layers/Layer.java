@@ -41,6 +41,10 @@ public abstract class Layer {
         return nativeGetId();
     }
 
+    public PropertyValue<String> getVisibility() {
+        return new PropertyValue<>(nativeGetVisibility());
+    }
+
     public float getMinZoom() {
         return nativeGetMinZoom();
     }
@@ -62,6 +66,8 @@ public abstract class Layer {
 
     protected native String nativeGetId();
 
+    protected native Object nativeGetVisibility();
+
     protected native void nativeSetLayoutProperty(String name, Object value);
 
     protected native void nativeSetPaintProperty(String name, Object value);
@@ -79,8 +85,6 @@ public abstract class Layer {
     protected native void nativeSetMinZoom(float zoom);
 
     protected native void nativeSetMaxZoom(float zoom);
-
-    protected native Object nativeGetProperty(String name);
 
     @Override
     public String toString() {

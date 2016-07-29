@@ -61,6 +61,10 @@ public:
 
     void setSourceLayer(jni::JNIEnv& env, jni::String sourceLayer);
 
+    //Property getters
+
+    jni::Object<jni::ObjectTag> getVisibility(jni::JNIEnv&);
+
 protected:
     std::unique_ptr<mbgl::style::Layer> ownedLayer;
     mbgl::style::Layer& layer;
