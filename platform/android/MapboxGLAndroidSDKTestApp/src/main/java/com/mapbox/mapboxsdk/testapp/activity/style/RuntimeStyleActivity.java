@@ -238,10 +238,10 @@ public class RuntimeStyleActivity extends AppCompatActivity {
         layer = mapboxMap.getLayerAs("parksLayer");
         //And get some properties
         PropertyValue<Boolean> fillAntialias = layer.getFillAntialias();
-        Log.d(TAG, "Fill anti alias: " + fillAntialias.value);
+        Log.d(TAG, "Fill anti alias: " + fillAntialias.getValue());
         layer.set(fillTranslateAnchor(FILL_TRANSLATE_ANCHOR_MAP));
         PropertyValue<String> fillTranslateAnchor = layer.getFillTranslateAnchor();
-        Log.d(TAG, "Fill translate anchor: " + fillTranslateAnchor.value);
+        Log.d(TAG, "Fill translate anchor: " + fillTranslateAnchor.getValue());
 
 
         //Get a good look at it all
@@ -282,13 +282,13 @@ public class RuntimeStyleActivity extends AppCompatActivity {
     }
 
     private void updateWaterColorOnZoom() {
-        Layer layer = mapboxMap.getLayer("water");
+        FillLayer layer = mapboxMap.getLayerAs("water");
         if (layer == null) {
             return;
         }
 
         //Set a zoom function to update the color of the water
-        layer.set(fillColor(zoom(
+        layer.set(fillColor(zoom(0.8f,
                 stop(1, fillColor(Color.GREEN)),
                 stop(4, fillColor(Color.BLUE)),
                 stop(12, fillColor(Color.RED)),
@@ -297,6 +297,11 @@ public class RuntimeStyleActivity extends AppCompatActivity {
 
         //do some animations to show it off properly
         mapboxMap.animateCamera(CameraUpdateFactory.zoomTo(1), 1500);
+
+        PropertyValue<String> fillColor = layer.getFillColor();
+        Function<String> function = fillColor.getFunction();
+        Log.d(TAG, "Fill color base: " + function.getBase());
+        Log.d(TAG, "Fill color #stops: " + function.getStops().length);
     }
 
     private String readRawResource(@RawRes int rawResource) throws IOException {

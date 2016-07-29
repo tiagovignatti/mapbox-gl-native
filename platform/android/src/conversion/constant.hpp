@@ -10,8 +10,6 @@
 #include <vector>
 #include <sstream>
 
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
 namespace mbgl {
 namespace android {
 namespace conversion {
@@ -27,7 +25,7 @@ struct Converter<jni::jobject*, bool> {
 
 template <>
 struct Converter<jni::jobject*, float> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const float &value) const {
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const float& value) const {
         static jni::jclass* javaClass = jni::NewGlobalRef(env, &jni::FindClass(env, "java/lang/Float")).release();
         static jni::jmethodID* constructor = &jni::GetMethodID(env, *javaClass, "<init>", "(F)V");
         return {&jni::NewObject(env, *javaClass, *constructor, (jfloat) value)};
@@ -36,14 +34,14 @@ struct Converter<jni::jobject*, float> {
 
 template <>
 struct Converter<jni::jobject*, std::string> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::string &value) const {
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::string& value) const {
         return {jni::Make<jni::String>(env, value).Get()};
     }
 };
 
 template <>
 struct Converter<jni::jobject*, Color> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const Color &value) const {
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const Color& value) const {
         std::stringstream sstream;
         sstream << "rgba(" << value.r << ", " << value.g << ", " << value.b << ", "  << value.a << ")";
         std::string result = sstream.str();
@@ -53,36 +51,36 @@ struct Converter<jni::jobject*, Color> {
 
 template <std::size_t N>
 struct Converter<jni::jobject*, std::array<float, N>> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::array<float, N> &value) const {
-            std::vector<float> v;
-            for (const float& id : value) {
-                v.push_back(id);
-            }
-            return convert<jni::jobject*, std::vector<float>>(env, v);
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::array<float, N>& value) const {
+        std::vector<float> v;
+        for (const float& id : value) {
+            v.push_back(id);
+        }
+        return convert<jni::jobject*, std::vector<float>>(env, v);
     }
 };
 
 template <>
 struct Converter<jni::jobject*, std::vector<std::string>> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::vector<std::string> &value) const {
-            static jni::jclass* stringCass = jni::NewGlobalRef(env, &jni::FindClass(env, "java/lang/String")).release();
-            jni::jarray<jni::jobject>& jarray = jni::NewObjectArray(env, value.size(), *stringCass);
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::vector<std::string>& value) const {
+        static jni::jclass* stringCass = jni::NewGlobalRef(env, &jni::FindClass(env, "java/lang/String")).release();
+        jni::jarray<jni::jobject>& jarray = jni::NewObjectArray(env, value.size(), *stringCass);
 
-            for(size_t i = 0; i < value.size(); i = i + 1) {
-                Result<jni::jobject*> converted = convert<jni::jobject*, std::string>(env, value.at(i));
-                jni::SetObjectArrayElement(env, jarray, i, *converted);
-            }
+        for(size_t i = 0; i < value.size(); i = i + 1) {
+            Result<jni::jobject*> converted = convert<jni::jobject*, std::string>(env, value.at(i));
+            jni::SetObjectArrayElement(env, jarray, i, *converted);
+        }
 
-            return &jarray;
+        return &jarray;
     }
 };
 
 template <>
 struct Converter<jni::jobject*, std::vector<float>> {
-    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::vector<float> &value) const {
-            jni::jarray<float>& jarray = jni::NewArray<float>(env, value.size());
-            jni::SetArrayRegion(env, jarray, 0, value);
-            return &jarray;
+    Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::vector<float>& value) const {
+        jni::jarray<float>& jarray = jni::NewArray<float>(env, value.size());
+        jni::SetArrayRegion(env, jarray, 0, value);
+        return &jarray;
     }
 };
 

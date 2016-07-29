@@ -4,11 +4,7 @@
 #include "../../conversion/conversion.hpp"
 #include "../../conversion/constant.hpp"
 #include "types.hpp"
-
-#pragma clang diagnostic ignored "-Wunused-parameter"
-
-//XXX
-#include <mbgl/platform/log.hpp>
+#include "function.hpp"
 
 namespace mbgl {
 namespace android {
@@ -21,18 +17,17 @@ struct Converter<jni::jobject*, mbgl::style::PropertyValue<T>> {
 
         if(value.isUndefined()) {
             //Return a nullptr representing a Java null value
-            mbgl::Log::Debug(mbgl::Event::JNI, "PropertyValue: undefined");
             return {nullptr};
         } else if (value.isConstant()) {
             //Time to convert the constant value
             Result<jni::jobject*> result = convert<jni::jobject*, T>(env, value.asConstant());
             return {*result};
             //return converted;
-        } else {
+        } else if (value.isFunction()) {
             //Must be a function than
-            //TODO
-            mbgl::Log::Error(mbgl::Event::JNI, "PropertyValue: Function properties not yet implemented");
-            return {nullptr};
+            return convert<jni::jobject*, mbgl::style::Function<T>>(env, value.asFunction());
+        } else {
+            throw std::runtime_error("Unknown property value type");
         }
 
     }

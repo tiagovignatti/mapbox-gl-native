@@ -9,27 +9,28 @@ import android.util.Log;
 public class PropertyValue<T> {
     private static final String TAG = PropertyValue.class.getSimpleName();
 
-    public final Object value;
+    private final Object value;
 
     /* package */ PropertyValue(Object value) {
         this.value = value;
     }
 
-    boolean isNull() {
+    public boolean isNull() {
         return value == null;
     }
 
-    boolean isFunction() {
+    public boolean isFunction() {
         return !isNull() && value instanceof Function;
     }
 
-    boolean isValue() {
+    public boolean isValue() {
         return !isNull() && !isFunction();
     }
 
     @Nullable
-    Function<T> getFunction() {
+    public Function<T> getFunction() {
         if (isFunction()) {
+            //noinspection unchecked
             return (Function<T>) value;
         } else {
             Log.w(TAG, "not a function, try value");
@@ -38,8 +39,9 @@ public class PropertyValue<T> {
     }
 
     @Nullable
-    T getValue() {
-        if (isFunction()) {
+    public T getValue() {
+        if (isValue()) {
+            //noinspection unchecked
             return (T) value;
         } else {
             Log.w(TAG, "not a value, try function");
