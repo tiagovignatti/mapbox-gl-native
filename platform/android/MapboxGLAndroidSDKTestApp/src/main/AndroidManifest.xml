@@ -309,6 +309,10 @@
                 android:value="@string/category_style" />
         </activity>
 
+
+        <!-- For Unit tests -->
+        <activity android:name=".activity.style.RuntimeStyleTestActivity"/>
+
         <!-- Configuration Settings -->
         <meta-data
             android:name="com.mapbox.TestEventsServer"
