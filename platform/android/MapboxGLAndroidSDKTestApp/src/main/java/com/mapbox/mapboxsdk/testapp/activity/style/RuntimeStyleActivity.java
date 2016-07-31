@@ -275,7 +275,7 @@ public class RuntimeStyleActivity extends AppCompatActivity {
 
     private void addSatelliteLayer() {
         //Add a source
-        Source source = new RasterSource("my-raster-source", "mapbox://mapbox.satellite");
+        Source source = new RasterSource("my-raster-source", "mapbox://mapbox.satellite").withTileSize(512);
         mapboxMap.addSource(source);
 
         //Add a layer
