@@ -17,14 +17,17 @@ public class CircleLayer extends Layer {
     protected native void initialize(String layerId, String sourceId);
 
     public void setSourceLayer(String sourceLayer) {
+        checkValidity();
         nativeSetSourceLayer(sourceLayer);
     }
 
     public void setFilter(Filter.Statement filter) {
+        checkValidity();
         this.setFilter(filter.toArray());
     }
 
     public void setFilter(Object[] filter) {
+        checkValidity();
         nativeSetFilter(filter);
     }
 
@@ -33,36 +36,43 @@ public class CircleLayer extends Layer {
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float> getCircleRadius() {
+        checkValidity();
         return (PropertyValue<Float>) new PropertyValue(nativeGetCircleRadius());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getCircleColor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetCircleColor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float> getCircleBlur() {
+        checkValidity();
         return (PropertyValue<Float>) new PropertyValue(nativeGetCircleBlur());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float> getCircleOpacity() {
+        checkValidity();
         return (PropertyValue<Float>) new PropertyValue(nativeGetCircleOpacity());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float[]> getCircleTranslate() {
+        checkValidity();
         return (PropertyValue<Float[]>) new PropertyValue(nativeGetCircleTranslate());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getCircleTranslateAnchor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetCircleTranslateAnchor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getCirclePitchScale() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetCirclePitchScale());
     }
 

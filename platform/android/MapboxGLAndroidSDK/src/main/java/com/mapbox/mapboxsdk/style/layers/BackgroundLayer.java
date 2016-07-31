@@ -21,16 +21,19 @@ public class BackgroundLayer extends Layer {
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getBackgroundColor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetBackgroundColor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getBackgroundPattern() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetBackgroundPattern());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float> getBackgroundOpacity() {
+        checkValidity();
         return (PropertyValue<Float>) new PropertyValue(nativeGetBackgroundOpacity());
     }
 

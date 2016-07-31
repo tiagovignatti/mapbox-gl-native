@@ -17,14 +17,17 @@ public class FillLayer extends Layer {
     protected native void initialize(String layerId, String sourceId);
 
     public void setSourceLayer(String sourceLayer) {
+        checkValidity();
         nativeSetSourceLayer(sourceLayer);
     }
 
     public void setFilter(Filter.Statement filter) {
+        checkValidity();
         this.setFilter(filter.toArray());
     }
 
     public void setFilter(Object[] filter) {
+        checkValidity();
         nativeSetFilter(filter);
     }
 
@@ -33,36 +36,43 @@ public class FillLayer extends Layer {
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Boolean> getFillAntialias() {
+        checkValidity();
         return (PropertyValue<Boolean>) new PropertyValue(nativeGetFillAntialias());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float> getFillOpacity() {
+        checkValidity();
         return (PropertyValue<Float>) new PropertyValue(nativeGetFillOpacity());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getFillColor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetFillColor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getFillOutlineColor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetFillOutlineColor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<Float[]> getFillTranslate() {
+        checkValidity();
         return (PropertyValue<Float[]>) new PropertyValue(nativeGetFillTranslate());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getFillTranslateAnchor() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetFillTranslateAnchor());
     }
 
     @SuppressWarnings("unchecked")
     public PropertyValue<String> getFillPattern() {
+        checkValidity();
         return (PropertyValue<String>) new PropertyValue(nativeGetFillPattern());
     }
 

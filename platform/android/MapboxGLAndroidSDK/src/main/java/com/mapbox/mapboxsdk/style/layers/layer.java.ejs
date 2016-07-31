@@ -28,16 +28,19 @@ public class <%- camelize(type) %>Layer extends Layer {
     protected native void initialize(String layerId, String sourceId);
 
     public void setSourceLayer(String sourceLayer) {
+        checkValidity();
         nativeSetSourceLayer(sourceLayer);
     }
 <% } -%>
 
 <% if (type !== 'background' && type !== 'raster') { -%>
     public void setFilter(Filter.Statement filter) {
+        checkValidity();
         this.setFilter(filter.toArray());
     }
 
     public void setFilter(Object[] filter) {
+        checkValidity();
         nativeSetFilter(filter);
     }
 
@@ -48,6 +51,7 @@ public class <%- camelize(type) %>Layer extends Layer {
 <% for (const property of properties) { -%>
     @SuppressWarnings("unchecked")
     public PropertyValue<<%- propertyType(property) %>> get<%- camelize(property.name) %>() {
+        checkValidity();
         return (PropertyValue<<%- propertyType(property) %>>) new PropertyValue(nativeGet<%- camelize(property.name) %>());
     }
 
