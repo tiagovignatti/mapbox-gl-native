@@ -21,7 +21,7 @@ namespace android {
     /**
      * Invoked when the construction is initiated from the jvm through a subclass
      */
-    Layer::Layer(jni::JNIEnv& env, std::unique_ptr<mbgl::style::Layer> coreLayer)
+    Layer::Layer(jni::JNIEnv&, std::unique_ptr<mbgl::style::Layer> coreLayer)
         : ownedLayer(std::move(coreLayer))
         , layer(*ownedLayer) {
     }
@@ -126,11 +126,11 @@ namespace android {
         }
     }
 
-    jni::jfloat Layer::getMinZoom(jni::JNIEnv& env){
+    jni::jfloat Layer::getMinZoom(jni::JNIEnv&){
         return layer.getMinZoom();
     }
 
-    jni::jfloat Layer::getMaxZoom(jni::JNIEnv& env) {
+    jni::jfloat Layer::getMaxZoom(jni::JNIEnv&) {
         return layer.getMaxZoom();
     }
 

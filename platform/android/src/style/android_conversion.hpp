@@ -44,7 +44,7 @@ inline optional<mbgl::android::Value> objectMember(const mbgl::android::Value& v
 }
 
 template <class Fn>
-optional<Error> eachMember(const mbgl::android::Value& value, Fn&& fn) {
+optional<Error> eachMember(const mbgl::android::Value&, Fn&&) {
     //TODO
     mbgl::Log::Warning(mbgl::Event::Android, "eachMember not implemented");
     return {};
