@@ -132,8 +132,8 @@ public class FillLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(fillColor("#000000"));
-        assertEquals((String) layer.getFillColor().getValue(), (String) "#000000");
+        layer.set(fillColor("rgba(0, 0, 0, 1);"));
+        assertEquals((String) layer.getFillColor().getValue(), (String) "rgba(0, 0, 0, 1);");
     }
 
     @Test
@@ -154,8 +154,8 @@ public class FillLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(fillOutlineColor("undefined"));
-        assertEquals((String) layer.getFillOutlineColor().getValue(), (String) "undefined");
+        layer.set(fillOutlineColor("rgba(0, 0, 0, 1);"));
+        assertEquals((String) layer.getFillOutlineColor().getValue(), (String) "rgba(0, 0, 0, 1);");
     }
 
     @Test

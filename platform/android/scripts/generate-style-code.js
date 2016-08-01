@@ -118,7 +118,7 @@ global.defaultValueJava = function(property) {
       case 'enum':
         return snakeCaseUpper(property.name) + "_" + snakeCaseUpper(property.values[0]);
       case 'color':
-        return '"' + property['default'] + '"';
+        return '"rgba(0, 0, 0, 1);"';
       case 'array':
              switch (property.value) {
               case 'string':

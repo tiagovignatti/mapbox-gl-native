@@ -198,8 +198,8 @@ public class LineLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(lineColor("#000000"));
-        assertEquals((String) layer.getLineColor().getValue(), (String) "#000000");
+        layer.set(lineColor("rgba(0, 0, 0, 1);"));
+        assertEquals((String) layer.getLineColor().getValue(), (String) "rgba(0, 0, 0, 1);");
     }
 
     @Test
