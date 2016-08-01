@@ -21,6 +21,11 @@ public class RasterSource extends Source {
         this.put(URL_KEY, url);
     }
 
+    public RasterSource(String id, TileSet tileSet) {
+        super(id, TYPE);
+        this.putAll(tileSet.toValueObject());
+    }
+
     public RasterSource withTileSize(int tileSize) {
         this.put(TILE_SIZE_KEY, (float) tileSize);
         return this;

@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -28,6 +27,7 @@ import com.mapbox.mapboxsdk.style.layers.RasterLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.mapboxsdk.style.sources.RasterSource;
 import com.mapbox.mapboxsdk.style.sources.Source;
+import com.mapbox.mapboxsdk.style.sources.TileSet;
 import com.mapbox.mapboxsdk.style.sources.VectorSource;
 import com.mapbox.mapboxsdk.testapp.R;
 
@@ -145,6 +145,9 @@ public class RuntimeStyleActivity extends AppCompatActivity {
                 return true;
             case R.id.action_update_water_color_on_zoom:
                 updateWaterColorOnZoom();
+                return true;
+            case R.id.action_add_custom_tiles:
+                addCustomTileSource();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -331,6 +334,17 @@ public class RuntimeStyleActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
+    }
+
+    private void addCustomTileSource() {
+        //Add a source
+        Source source = new VectorSource("custom-tile-source", new TileSet("2.1.0", "https://vector.mapzen.com/osm/all/{z}/{x}/{y}.mvt?api_key=vector-tiles-LM25tq4"));
+        mapboxMap.addSource(source);
+
+        //Add a layer
+        FillLayer layer = new FillLayer("custom-tile-layers", "custom-tile-source");
+        layer.setSourceLayer("water");
+        mapboxMap.addLayer(layer);
     }
 
     private static class DefaultCallback implements MapboxMap.CancelableCallback {
