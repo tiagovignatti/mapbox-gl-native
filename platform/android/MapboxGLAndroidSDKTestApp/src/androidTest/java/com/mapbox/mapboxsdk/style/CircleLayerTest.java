@@ -65,4 +65,110 @@ public class CircleLayerTest {
             }
         });
     }
+
+    @Test
+    public void testCircleRadius() {
+        Log.i(TAG, "circle-radius");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleRadius(0.3f));
+                assertEquals((Float) layer.getCircleRadius().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testCircleColor() {
+        Log.i(TAG, "circle-color");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleColor("#000000"));
+                assertEquals((String) layer.getCircleColor().getValue(), (String) "#000000");
+            }
+        });
+    }
+
+    @Test
+    public void testCircleBlur() {
+        Log.i(TAG, "circle-blur");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleBlur(0.3f));
+                assertEquals((Float) layer.getCircleBlur().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testCircleOpacity() {
+        Log.i(TAG, "circle-opacity");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleOpacity(0.3f));
+                assertEquals((Float) layer.getCircleOpacity().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testCircleTranslate() {
+        Log.i(TAG, "circle-translate");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleTranslate(new Float[]{0f,0f}));
+                assertEquals((Float[]) layer.getCircleTranslate().getValue(), (Float[]) new Float[]{0f,0f});
+            }
+        });
+    }
+
+    @Test
+    public void testCircleTranslateAnchor() {
+        Log.i(TAG, "circle-translate-anchor");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circleTranslateAnchor(CIRCLE_TRANSLATE_ANCHOR_MAP));
+                assertEquals((String) layer.getCircleTranslateAnchor().getValue(), (String) CIRCLE_TRANSLATE_ANCHOR_MAP);
+            }
+        });
+    }
+
+    @Test
+    public void testCirclePitchScale() {
+        Log.i(TAG, "circle-pitch-scale");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(circlePitchScale(CIRCLE_PITCH_SCALE_MAP));
+                assertEquals((String) layer.getCirclePitchScale().getValue(), (String) CIRCLE_PITCH_SCALE_MAP);
+            }
+        });
+    }
+
 }

@@ -61,4 +61,50 @@ public class BackgroundLayerTest {
             }
         });
     }
+
+    @Test
+    public void testBackgroundColor() {
+        Log.i(TAG, "background-color");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(backgroundColor("#000000"));
+                assertEquals((String) layer.getBackgroundColor().getValue(), (String) "#000000");
+            }
+        });
+    }
+
+    @Test
+    public void testBackgroundPattern() {
+        Log.i(TAG, "background-pattern");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(backgroundPattern("pedestrian-polygon"));
+                assertEquals((String) layer.getBackgroundPattern().getValue(), (String) "pedestrian-polygon");
+            }
+        });
+    }
+
+    @Test
+    public void testBackgroundOpacity() {
+        Log.i(TAG, "background-opacity");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(backgroundOpacity(0.3f));
+                assertEquals((Float) layer.getBackgroundOpacity().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
 }

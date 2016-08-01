@@ -22,7 +22,7 @@ global.camelizeWithLeadingLowercase = function (str) {
   });
 }
 
-global.snakeCaseUpper = function (str) {
+global.snakeCaseUpper = function snakeCaseUpper(str) {
   return str.replace(/-/g, "_").toUpperCase();
 }
 
@@ -100,6 +100,42 @@ global.propertyTypeAnnotation = function propertyTypeAnnotation(property) {
         return "";
   }
 };
+
+global.defaultValueJava = function(property) {
+    if(property.name.endsWith("-pattern")) {
+        return '"pedestrian-polygon"';
+    }
+    if(property.name.endsWith("-font")) {
+        return 'new String[]{"Open Sans Regular", "Arial Unicode MS Regular"}';
+    }
+     switch (property.type) {
+      case 'boolean':
+        return 'true';
+      case 'number':
+        return '0.3f';
+      case 'string':
+        return '"' + property['default'] + '"';
+      case 'enum':
+        return snakeCaseUpper(property.name) + "_" + snakeCaseUpper(property.values[0]);
+      case 'color':
+        return '"' + property['default'] + '"';
+      case 'array':
+             switch (property.value) {
+              case 'string':
+                return '[' + property['default'] + "]";
+              case 'number':
+                var result ='new Float[]{';
+                for (var i = 0; i < property.length; i++) {
+                    result += "0f";
+                    if (i +1 != property.length) {
+                        result += ",";
+                    }
+                }
+                return result + "}";
+             }
+      default: throw new Error(`unknown type for ${property.name}`)
+      }
+}
 
 //Process Layers
 const layers = spec.layer.type.values.map((type) => {

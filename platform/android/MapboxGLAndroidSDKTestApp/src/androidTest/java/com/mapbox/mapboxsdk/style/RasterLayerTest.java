@@ -65,4 +65,110 @@ public class RasterLayerTest {
             }
         });
     }
+
+    @Test
+    public void testRasterOpacity() {
+        Log.i(TAG, "raster-opacity");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterOpacity(0.3f));
+                assertEquals((Float) layer.getRasterOpacity().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterHueRotate() {
+        Log.i(TAG, "raster-hue-rotate");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterHueRotate(0.3f));
+                assertEquals((Float) layer.getRasterHueRotate().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterBrightnessMin() {
+        Log.i(TAG, "raster-brightness-min");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterBrightnessMin(0.3f));
+                assertEquals((Float) layer.getRasterBrightnessMin().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterBrightnessMax() {
+        Log.i(TAG, "raster-brightness-max");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterBrightnessMax(0.3f));
+                assertEquals((Float) layer.getRasterBrightnessMax().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterSaturation() {
+        Log.i(TAG, "raster-saturation");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterSaturation(0.3f));
+                assertEquals((Float) layer.getRasterSaturation().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterContrast() {
+        Log.i(TAG, "raster-contrast");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterContrast(0.3f));
+                assertEquals((Float) layer.getRasterContrast().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testRasterFadeDuration() {
+        Log.i(TAG, "raster-fade-duration");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(rasterFadeDuration(0.3f));
+                assertEquals((Float) layer.getRasterFadeDuration().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
 }

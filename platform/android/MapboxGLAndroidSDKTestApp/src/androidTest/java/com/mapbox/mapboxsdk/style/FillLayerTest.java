@@ -65,4 +65,110 @@ public class FillLayerTest {
             }
         });
     }
+
+    @Test
+    public void testFillAntialias() {
+        Log.i(TAG, "fill-antialias");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillAntialias(true));
+                assertEquals((Boolean) layer.getFillAntialias().getValue(), (Boolean) true);
+            }
+        });
+    }
+
+    @Test
+    public void testFillOpacity() {
+        Log.i(TAG, "fill-opacity");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillOpacity(0.3f));
+                assertEquals((Float) layer.getFillOpacity().getValue(), (Float) 0.3f);
+            }
+        });
+    }
+
+    @Test
+    public void testFillColor() {
+        Log.i(TAG, "fill-color");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillColor("#000000"));
+                assertEquals((String) layer.getFillColor().getValue(), (String) "#000000");
+            }
+        });
+    }
+
+    @Test
+    public void testFillOutlineColor() {
+        Log.i(TAG, "fill-outline-color");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillOutlineColor("undefined"));
+                assertEquals((String) layer.getFillOutlineColor().getValue(), (String) "undefined");
+            }
+        });
+    }
+
+    @Test
+    public void testFillTranslate() {
+        Log.i(TAG, "fill-translate");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillTranslate(new Float[]{0f,0f}));
+                assertEquals((Float[]) layer.getFillTranslate().getValue(), (Float[]) new Float[]{0f,0f});
+            }
+        });
+    }
+
+    @Test
+    public void testFillTranslateAnchor() {
+        Log.i(TAG, "fill-translate-anchor");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillTranslateAnchor(FILL_TRANSLATE_ANCHOR_MAP));
+                assertEquals((String) layer.getFillTranslateAnchor().getValue(), (String) FILL_TRANSLATE_ANCHOR_MAP);
+            }
+        });
+    }
+
+    @Test
+    public void testFillPattern() {
+        Log.i(TAG, "fill-pattern");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(fillPattern("pedestrian-polygon"));
+                assertEquals((String) layer.getFillPattern().getValue(), (String) "pedestrian-polygon");
+            }
+        });
+    }
+
 }

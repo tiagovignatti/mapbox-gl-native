@@ -74,4 +74,22 @@ public class <%- camelize(type) %>LayerTest {
             }
         });
     }
+
+<% for (const property of properties) { -%>
+    @Test
+    public void test<%- camelize(property.name) %>() {
+        Log.i(TAG, "<%- property.name %>");
+        assertNotNull(layer);
+
+        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+                //Set and Get
+                layer.set(<%- camelizeWithLeadingLowercase(property.name) %>(<%- defaultValueJava(property) %>));
+                assertEquals((<%- propertyType(property) %>) layer.get<%- camelize(property.name) %>().getValue(), (<%- propertyType(property) %>) <%- defaultValueJava(property) %>);
+            }
+        });
+    }
+
+<% } -%>
 }
