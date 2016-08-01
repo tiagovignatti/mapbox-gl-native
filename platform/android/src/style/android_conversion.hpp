@@ -13,10 +13,6 @@ namespace mbgl {
 namespace style {
 namespace conversion {
 
-
-//XXX
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-
 inline bool isUndefined(const mbgl::android::Value& value) {
     return value.isNull();
 }

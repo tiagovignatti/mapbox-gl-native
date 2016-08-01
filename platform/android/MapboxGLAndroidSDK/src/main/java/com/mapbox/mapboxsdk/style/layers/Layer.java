@@ -1,7 +1,6 @@
 package com.mapbox.mapboxsdk.style.layers;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 /**
  * Base class for the different Layer types
@@ -12,12 +11,10 @@ public abstract class Layer {
     private boolean invalidated;
 
     public Layer(long nativePtr) {
-        Log.i(Layer.class.getSimpleName(), "Native pointer constructor: " + nativePtr);
         this.nativePtr = nativePtr;
     }
 
     public Layer() {
-        Log.i(Layer.class.getSimpleName(), "Default constructor");
     }
 
     public void set(@NonNull Property<?>... properties) {
