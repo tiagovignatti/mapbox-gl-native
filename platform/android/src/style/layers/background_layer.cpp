@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     BackgroundLayer::BackgroundLayer(jni::JNIEnv& env, jni::String layerId)
         : Layer(env, std::make_unique<mbgl::style::BackgroundLayer>(jni::Make<std::string>(env, layerId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "BackgroundLayer constructed, owning reference");
     }
 
     BackgroundLayer::BackgroundLayer(mbgl::Map& map, mbgl::style::BackgroundLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "BackgroundLayer Non-owning reference constructor");
     }
 
     BackgroundLayer::~BackgroundLayer() = default;
@@ -53,8 +47,6 @@ namespace android {
     }
 
     void BackgroundLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         BackgroundLayer::javaClass = *jni::Class<BackgroundLayer>::Find(env).NewGlobalRef(env).release();
 

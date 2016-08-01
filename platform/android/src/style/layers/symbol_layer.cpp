@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     SymbolLayer::SymbolLayer(jni::JNIEnv& env, jni::String layerId, jni::String sourceId)
         : Layer(env, std::make_unique<mbgl::style::SymbolLayer>(jni::Make<std::string>(env, layerId), jni::Make<std::string>(env, sourceId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "SymbolLayer constructed, owning reference");
     }
 
     SymbolLayer::SymbolLayer(mbgl::Map& map, mbgl::style::SymbolLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "SymbolLayer Non-owning reference constructor");
     }
 
     SymbolLayer::~SymbolLayer() = default;
@@ -323,8 +317,6 @@ namespace android {
     }
 
     void SymbolLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         SymbolLayer::javaClass = *jni::Class<SymbolLayer>::Find(env).NewGlobalRef(env).release();
 

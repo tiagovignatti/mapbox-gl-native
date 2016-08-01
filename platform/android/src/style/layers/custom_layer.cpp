@@ -2,7 +2,6 @@
 
 #include <string>
 
-//XXX
 #include <mbgl/platform/log.hpp>
 
 namespace mbgl {
@@ -40,8 +39,6 @@ namespace android {
     }
 
     void CustomLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native custom layer");
-
         //Lookup the class
         CustomLayer::javaClass = *jni::Class<CustomLayer>::Find(env).NewGlobalRef(env).release();
 

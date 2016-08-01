@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     CircleLayer::CircleLayer(jni::JNIEnv& env, jni::String layerId, jni::String sourceId)
         : Layer(env, std::make_unique<mbgl::style::CircleLayer>(jni::Make<std::string>(env, layerId), jni::Make<std::string>(env, sourceId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "CircleLayer constructed, owning reference");
     }
 
     CircleLayer::CircleLayer(mbgl::Map& map, mbgl::style::CircleLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "CircleLayer Non-owning reference constructor");
     }
 
     CircleLayer::~CircleLayer() = default;
@@ -77,8 +71,6 @@ namespace android {
     }
 
     void CircleLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         CircleLayer::javaClass = *jni::Class<CircleLayer>::Find(env).NewGlobalRef(env).release();
 

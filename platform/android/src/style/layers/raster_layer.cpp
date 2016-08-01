@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     RasterLayer::RasterLayer(jni::JNIEnv& env, jni::String layerId, jni::String sourceId)
         : Layer(env, std::make_unique<mbgl::style::RasterLayer>(jni::Make<std::string>(env, layerId), jni::Make<std::string>(env, sourceId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "RasterLayer constructed, owning reference");
     }
 
     RasterLayer::RasterLayer(mbgl::Map& map, mbgl::style::RasterLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "RasterLayer Non-owning reference constructor");
     }
 
     RasterLayer::~RasterLayer() = default;
@@ -77,8 +71,6 @@ namespace android {
     }
 
     void RasterLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         RasterLayer::javaClass = *jni::Class<RasterLayer>::Find(env).NewGlobalRef(env).release();
 

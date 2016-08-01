@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     LineLayer::LineLayer(jni::JNIEnv& env, jni::String layerId, jni::String sourceId)
         : Layer(env, std::make_unique<mbgl::style::LineLayer>(jni::Make<std::string>(env, layerId), jni::Make<std::string>(env, sourceId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "LineLayer constructed, owning reference");
     }
 
     LineLayer::LineLayer(mbgl::Map& map, mbgl::style::LineLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "LineLayer Non-owning reference constructor");
     }
 
     LineLayer::~LineLayer() = default;
@@ -119,8 +113,6 @@ namespace android {
     }
 
     void LineLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         LineLayer::javaClass = *jni::Class<LineLayer>::Find(env).NewGlobalRef(env).release();
 

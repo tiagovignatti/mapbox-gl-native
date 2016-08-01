@@ -24,16 +24,12 @@ namespace android {
     Layer::Layer(jni::JNIEnv& env, std::unique_ptr<mbgl::style::Layer> coreLayer)
         : ownedLayer(std::move(coreLayer))
         , layer(*ownedLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "Layer constructed, owning reference");
     }
 
     Layer::Layer(mbgl::Map& coreMap, mbgl::style::Layer& coreLayer) : layer(coreLayer) , map(&coreMap) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Non-owning reference constructor");
     }
 
     Layer::~Layer() {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Layer destroyed");
     }
 
     jni::String Layer::getId(jni::JNIEnv& env) {
@@ -46,8 +42,6 @@ namespace android {
     }
 
     void Layer::setLayoutProperty(jni::JNIEnv& env, jni::String jname, jni::Object<> jvalue) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Set layout property");
-
         Value value(env, jvalue);
 
         //Convert and set property
@@ -64,8 +58,6 @@ namespace android {
     }
 
     void Layer::setPaintProperty(jni::JNIEnv& env, jni::String jname, jni::Object<> jvalue) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Set paint property");
-
         Value value(env, jvalue);
 
         //Convert and set property
@@ -77,8 +69,6 @@ namespace android {
     }
 
     void Layer::updateStyle(jni::JNIEnv&, jni::jboolean updateClasses) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Update style property. Update classes: " + std::to_string(updateClasses));
-
         //Update the style only if attached
         if (ownedLayer == nullptr) {
             Update flags = mbgl::Update::RecalculateStyle;
@@ -94,7 +84,6 @@ namespace android {
     void Layer::setFilter(jni::JNIEnv& env, jni::Array<jni::Object<>> jfilter) {
         using namespace mbgl::style;
         using namespace mbgl::style::conversion;
-        mbgl::Log::Debug(mbgl::Event::JNI, "Set filter");
 
         Value wrapped(env, jfilter);
         Filter filter;
@@ -123,7 +112,6 @@ namespace android {
         using namespace mbgl::style;
 
         std::string layerId = jni::Make<std::string>(env, sourceLayer);
-        mbgl::Log::Debug(mbgl::Event::JNI, "Set source layer: " + layerId);
 
         if (layer.is<FillLayer>()) {
             layer.as<FillLayer>()->setSourceLayer(layerId);
@@ -162,8 +150,6 @@ namespace android {
     jni::Class<Layer> Layer::javaClass;
 
     void Layer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native base layer");
-
         //Lookup the class
         Layer::javaClass = *jni::Class<Layer>::Find(env).NewGlobalRef(env).release();
 
@@ -185,5 +171,6 @@ namespace android {
         );
 
     }
-}
-}
+
+} //android
+} //mbgl

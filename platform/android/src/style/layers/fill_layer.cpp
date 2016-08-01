@@ -6,21 +6,15 @@
 
 #include "../conversion/property_value.hpp"
 
-//XXX
-#include <mbgl/platform/log.hpp>
-
 namespace mbgl {
 namespace android {
 
     FillLayer::FillLayer(jni::JNIEnv& env, jni::String layerId, jni::String sourceId)
         : Layer(env, std::make_unique<mbgl::style::FillLayer>(jni::Make<std::string>(env, layerId), jni::Make<std::string>(env, sourceId))) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "FillLayer constructed, owning reference");
     }
 
     FillLayer::FillLayer(mbgl::Map& map, mbgl::style::FillLayer& coreLayer)
         : Layer(map, coreLayer) {
-
-        mbgl::Log::Debug(mbgl::Event::JNI, "FillLayer Non-owning reference constructor");
     }
 
     FillLayer::~FillLayer() = default;
@@ -77,8 +71,6 @@ namespace android {
     }
 
     void FillLayer::registerNative(jni::JNIEnv& env) {
-        mbgl::Log::Debug(mbgl::Event::JNI, "Registering native background layer");
-
         //Lookup the class
         FillLayer::javaClass = *jni::Class<FillLayer>::Find(env).NewGlobalRef(env).release();
 
