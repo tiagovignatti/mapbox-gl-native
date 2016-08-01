@@ -38,7 +38,6 @@ import com.mapbox.mapboxsdk.constants.MyBearingTracking;
 import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.constants.Style;
 import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.layers.CustomLayer;
 import com.mapbox.mapboxsdk.maps.widgets.MyLocationViewSettings;
 import com.mapbox.mapboxsdk.style.layers.Layer;
 import com.mapbox.mapboxsdk.style.layers.NoSuchLayerException;
@@ -1635,34 +1634,6 @@ public class MapboxMap {
     // used by MapView
     OnMyBearingTrackingModeChangeListener getOnMyBearingTrackingModeChangeListener() {
         return mOnMyBearingTrackingModeChangeListener;
-    }
-
-    //
-    // Custom layer
-    //
-
-    /**
-     * Do not use this method, experimental feature.
-     */
-    @UiThread
-    public void addCustomLayer(CustomLayer customLayer, String before) {
-        mMapView.addCustomLayer(customLayer, before);
-    }
-
-    /**
-     * Do not use this method, experimental feature.
-     */
-    @UiThread
-    public void removeCustomLayer(String id) {
-        mMapView.removeCustomLayer(id);
-    }
-
-    /**
-     * Do not use this method, experimental feature.
-     */
-    @UiThread
-    public void invalidateCustomLayers() {
-        mMapView.invalidateCustomLayers();
     }
 
     MapView getMapView() {
