@@ -1,14 +1,17 @@
 // This file is generated. Edit android/platform/scripts/generate-style-code.js, then run `make style-code-android`.
 package com.mapbox.mapboxsdk.style;
 
+import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.style.layers.LineLayer;
+import com.mapbox.mapboxsdk.testapp.R;
 import com.mapbox.mapboxsdk.testapp.activity.style.RuntimeStyleTestActivity;
+import com.mapbox.mapboxsdk.testapp.espresso.BaseTest;
+import com.mapbox.mapboxsdk.testapp.espresso.utils.OnMapReadyIdlingResource;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +26,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.*;
  * Basic smoke tests for LineLayer
  */
 @RunWith(AndroidJUnit4.class)
-public class LineLayerTest {
+public class LineLayerTest extends BaseTest {
     private static final String TAG = LineLayerTest.class.getSimpleName();
 
     @Rule
@@ -31,249 +34,347 @@ public class LineLayerTest {
 
     private LineLayer layer;
 
-    @Before
-    public void setUp() throws Exception {
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
+    private OnMapReadyIdlingResource idlingResource;
 
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                Log.i(TAG, "Adding layer");
-                layer = new LineLayer("my-layer", "composite");
-                layer.setSourceLayer("composite");
-                mapboxMap.addLayer(layer);
-                //Layer reference is now stale, get new reference
-                layer = mapboxMap.getLayerAs("my-layer");
-            }
-        });
+    private MapboxMap mapboxMap;
+
+    @Before
+    public void setup() {
+        idlingResource = new OnMapReadyIdlingResource(rule.getActivity());
+        Espresso.registerIdlingResources(idlingResource);
     }
 
     @Test
     public void testSetVisibility() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "visibility");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
+        //Get initial
+        assertEquals(layer.getVisibility().getValue(), VISIBLE);
 
-                //Get initial
-                assertEquals(layer.getVisibility().getValue(), VISIBLE);
-
-                //Set
-                layer.set(visibility(NONE));
-                assertEquals(layer.getVisibility().getValue(), NONE);
-            }
-        });
+        //Set
+        layer.set(visibility(NONE));
+        assertEquals(layer.getVisibility().getValue(), NONE);
     }
 
     @Test
     public void testLineCap() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-cap");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineCap(LINE_CAP_BUTT));
-                assertEquals((String) layer.getLineCap().getValue(), (String) LINE_CAP_BUTT);
-            }
-        });
+        //Set and Get
+        layer.set(lineCap(LINE_CAP_BUTT));
+        assertEquals((String) layer.getLineCap().getValue(), (String) LINE_CAP_BUTT);
     }
 
     @Test
     public void testLineJoin() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-join");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineJoin(LINE_JOIN_BEVEL));
-                assertEquals((String) layer.getLineJoin().getValue(), (String) LINE_JOIN_BEVEL);
-            }
-        });
+        //Set and Get
+        layer.set(lineJoin(LINE_JOIN_BEVEL));
+        assertEquals((String) layer.getLineJoin().getValue(), (String) LINE_JOIN_BEVEL);
     }
 
     @Test
     public void testLineMiterLimit() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-miter-limit");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineMiterLimit(0.3f));
-                assertEquals((Float) layer.getLineMiterLimit().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineMiterLimit(0.3f));
+        assertEquals((Float) layer.getLineMiterLimit().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineRoundLimit() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-round-limit");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineRoundLimit(0.3f));
-                assertEquals((Float) layer.getLineRoundLimit().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineRoundLimit(0.3f));
+        assertEquals((Float) layer.getLineRoundLimit().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineOpacity() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-opacity");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineOpacity(0.3f));
-                assertEquals((Float) layer.getLineOpacity().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineOpacity(0.3f));
+        assertEquals((Float) layer.getLineOpacity().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineColor() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-color");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineColor("#000000"));
-                assertEquals((String) layer.getLineColor().getValue(), (String) "#000000");
-            }
-        });
+        //Set and Get
+        layer.set(lineColor("#000000"));
+        assertEquals((String) layer.getLineColor().getValue(), (String) "#000000");
     }
 
     @Test
     public void testLineTranslate() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-translate");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineTranslate(new Float[]{0f,0f}));
-                assertEquals((Float[]) layer.getLineTranslate().getValue(), (Float[]) new Float[]{0f,0f});
-            }
-        });
+        //Set and Get
+        layer.set(lineTranslate(new Float[]{0f,0f}));
+        assertEquals((Float[]) layer.getLineTranslate().getValue(), (Float[]) new Float[]{0f,0f});
     }
 
     @Test
     public void testLineTranslateAnchor() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-translate-anchor");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineTranslateAnchor(LINE_TRANSLATE_ANCHOR_MAP));
-                assertEquals((String) layer.getLineTranslateAnchor().getValue(), (String) LINE_TRANSLATE_ANCHOR_MAP);
-            }
-        });
+        //Set and Get
+        layer.set(lineTranslateAnchor(LINE_TRANSLATE_ANCHOR_MAP));
+        assertEquals((String) layer.getLineTranslateAnchor().getValue(), (String) LINE_TRANSLATE_ANCHOR_MAP);
     }
 
     @Test
     public void testLineWidth() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-width");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineWidth(0.3f));
-                assertEquals((Float) layer.getLineWidth().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineWidth(0.3f));
+        assertEquals((Float) layer.getLineWidth().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineGapWidth() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-gap-width");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineGapWidth(0.3f));
-                assertEquals((Float) layer.getLineGapWidth().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineGapWidth(0.3f));
+        assertEquals((Float) layer.getLineGapWidth().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineOffset() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-offset");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineOffset(0.3f));
-                assertEquals((Float) layer.getLineOffset().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineOffset(0.3f));
+        assertEquals((Float) layer.getLineOffset().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineBlur() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-blur");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineBlur(0.3f));
-                assertEquals((Float) layer.getLineBlur().getValue(), (Float) 0.3f);
-            }
-        });
+        //Set and Get
+        layer.set(lineBlur(0.3f));
+        assertEquals((Float) layer.getLineBlur().getValue(), (Float) 0.3f);
     }
 
     @Test
     public void testLineDasharray() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-dasharray");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(lineDasharray(new Float[]{}));
-                assertEquals((Float[]) layer.getLineDasharray().getValue(), (Float[]) new Float[]{});
-            }
-        });
+        //Set and Get
+        layer.set(lineDasharray(new Float[]{}));
+        assertEquals((Float[]) layer.getLineDasharray().getValue(), (Float[]) new Float[]{});
     }
 
     @Test
     public void testLinePattern() {
+        checkViewIsDisplayed(R.id.mapView);
+
+        mapboxMap = rule.getActivity().getMapboxMap();
+
+        if ((layer = mapboxMap.getLayerAs("my-layer")) == null) {
+            Log.i(TAG, "Adding layer");
+            layer = new LineLayer("my-layer", "composite");
+            layer.setSourceLayer("composite");
+            mapboxMap.addLayer(layer);
+            //Layer reference is now stale, get new reference
+            layer = mapboxMap.getLayerAs("my-layer");
+        }
         Log.i(TAG, "line-pattern");
         assertNotNull(layer);
 
-        rule.getActivity().mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(MapboxMap mapboxMap) {
-                //Set and Get
-                layer.set(linePattern("pedestrian-polygon"));
-                assertEquals((String) layer.getLinePattern().getValue(), (String) "pedestrian-polygon");
-            }
-        });
+        //Set and Get
+        layer.set(linePattern("pedestrian-polygon"));
+        assertEquals((String) layer.getLinePattern().getValue(), (String) "pedestrian-polygon");
     }
 
 }
