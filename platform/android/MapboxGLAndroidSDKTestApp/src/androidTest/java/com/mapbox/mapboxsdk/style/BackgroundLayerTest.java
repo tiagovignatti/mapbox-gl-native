@@ -76,8 +76,8 @@ public class BackgroundLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(backgroundColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getBackgroundColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(backgroundColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getBackgroundColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test

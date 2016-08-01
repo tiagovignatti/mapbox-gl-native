@@ -858,8 +858,8 @@ public class SymbolLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(iconColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getIconColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(iconColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getIconColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test
@@ -880,8 +880,8 @@ public class SymbolLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(iconHaloColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getIconHaloColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(iconHaloColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getIconHaloColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test
@@ -1012,8 +1012,8 @@ public class SymbolLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(textColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getTextColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(textColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getTextColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test
@@ -1034,8 +1034,8 @@ public class SymbolLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(textHaloColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getTextHaloColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(textHaloColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getTextHaloColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test

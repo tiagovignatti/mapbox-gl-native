@@ -110,8 +110,8 @@ public class CircleLayerTest extends BaseTest {
         assertNotNull(layer);
 
         //Set and Get
-        layer.set(circleColor("rgba(0, 0, 0, 1);"));
-        assertEquals((String) layer.getCircleColor().getValue(), (String) "rgba(0, 0, 0, 1);");
+        layer.set(circleColor("rgba(0, 0, 0, 1)"));
+        assertEquals((String) layer.getCircleColor().getValue(), (String) "rgba(0, 0, 0, 1)");
     }
 
     @Test
