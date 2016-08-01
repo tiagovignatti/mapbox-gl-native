@@ -13,6 +13,7 @@ import com.mapbox.mapboxsdk.testapp.activity.style.RuntimeStyleTestActivity;
 import com.mapbox.mapboxsdk.testapp.espresso.BaseTest;
 import com.mapbox.mapboxsdk.testapp.espresso.utils.OnMapReadyIdlingResource;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -223,4 +224,9 @@ public class FillLayerTest extends BaseTest {
         assertEquals((String) layer.getFillPattern().getValue(), (String) "pedestrian-polygon");
     }
 
+
+   @After
+   public void unregisterIntentServiceIdlingResource() {
+       Espresso.unregisterIdlingResources(idlingResource);
+   }
 }
