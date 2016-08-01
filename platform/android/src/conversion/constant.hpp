@@ -78,8 +78,14 @@ struct Converter<jni::jobject*, std::vector<std::string>> {
 template <>
 struct Converter<jni::jobject*, std::vector<float>> {
     Result<jni::jobject*> operator()(jni::JNIEnv& env, const std::vector<float>& value) const {
-        jni::jarray<float>& jarray = jni::NewArray<float>(env, value.size());
-        jni::SetArrayRegion(env, jarray, 0, value);
+        static jni::jclass* floatClass = jni::NewGlobalRef(env, &jni::FindClass(env, "java/lang/Float")).release();
+        jni::jarray<jni::jobject>& jarray = jni::NewObjectArray(env, value.size(), *floatClass);
+
+        for(size_t i = 0; i < value.size(); i = i + 1) {
+            Result<jni::jobject*> converted = convert<jni::jobject*, float>(env, value.at(i));
+            jni::SetObjectArrayElement(env, jarray, i, *converted);
+        }
+
         return &jarray;
     }
 };
